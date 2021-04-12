@@ -1,27 +1,5 @@
-let url = "/../../assets/documents/";
-showMaterialsList();
-function showMaterialsList(){
-    $.ajax({
-        url: url,
-        success: function(data){
-            let fileNames = new Array();
-            $(data).find("li > a").each(function(){
-                currentName = $(this).attr("title");
-                    if(currentName !== ".."){
-                        fileNames.push(currentName);
-                    }
-            });
-            if(url === "/../../assets/documents/"){
-                $("#go-back").hide();
-            }
-            else{
-                $("#go-back").show();
-            }
+let currentPath = "../../assets/documents/Алімпіядныя заданні";
 
-            showFiles(fileNames);
-        }
-    });
-}
 function showFiles(files){
     $("#files-list").empty();
     files.forEach(file => {
@@ -29,7 +7,7 @@ function showFiles(files){
         if(isTypeForDownload(type[type.length - 1])){
             $("#files-list").append( `
                 <li class="materials-list__item">
-                    <a class="materials-list__link" href="${url}${file}" download>${file}</a>
+                    <a class="materials-list__link" href="${currentPath}${file}" download>${file}</a>
                 </li>
             `);
         }else{
@@ -72,3 +50,27 @@ $('body').on('click', '.link-folder', function() {
     url = `${url}${folderName}/`;
     showMaterialsList();
 });
+getData();
+function getData(){
+    $.getJSON( "../../assets/data/roots.json", function( data ) {
+        let array = new Array();
+        
+        let currentPathSplit = currentPath.split("/");
+        let currentFolder = currentPathSplit[currentPathSplit.length - 1];
+
+        data.forEach(element => {
+            
+            let splitElementPath = `${element.Path}/${element.Name}`.split("/");
+            let folderPozition = splitElementPath.indexOf(currentFolder);
+            
+            if(folderPozition >= 0){
+                let nextElement = splitElementPath[folderPozition + 1];
+                
+                if(!array.includes(nextElement)){
+                    array.push(nextElement);
+                }
+            }
+        });
+        showFiles(array);
+      });
+}
