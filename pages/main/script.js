@@ -7,7 +7,7 @@ function showFiles(files){
         if(isTypeForDownload(type[type.length - 1])){
             $("#files-list").append( `
                 <li class="materials-list__item">
-                    <a class="materials-list__link" href="${currentPath}${file}" download>${file}</a>
+                    <a class="materials-list__link" href="${currentPath}/${file}" download>${file}</a>
                 </li>
             `);
         }else{
