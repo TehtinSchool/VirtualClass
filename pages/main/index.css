@@ -5,12 +5,32 @@
 /* -- preview --  */
 .preview{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
 
     height: 100vh;
     width: 100%;
+
     background-image: url(../../assets/images/background-image.jpg);
+}
+.preview__content{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.preview__header{
+    padding-top: 20px;
+
+    text-align: center;
+    color: #21120b;
+    text-shadow: 1px 1px 2px #000, 0 0 1em #ababab;
+    font-size: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+}
+@media(max-width: 700px){
+    .preview__header{
+        font-size: 1rem;
+    }
 }
 .preview_title{
     max-width: 100%;
