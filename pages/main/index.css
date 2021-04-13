@@ -191,3 +191,6 @@
 .icon-ppt::before{
     background-image: url("../../assets/images/icons/ppt.png");
 }
+.icon-link::before{
+    background-image: url("../../assets/images/icons/link.png");
+}
