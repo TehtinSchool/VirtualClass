@@ -91,7 +91,7 @@
 .content__go-back{
     display: flex;
     align-items: center;
-
+    min-height: 30px;
 }
 .go-back__img{
     width: 30px;
