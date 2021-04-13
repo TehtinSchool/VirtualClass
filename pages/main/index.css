@@ -33,7 +33,7 @@
     }
 }
 
-/* --  --  */
+/* -- Content  --  */
 .content{
     display: flex;
     justify-content: center;
@@ -128,7 +128,7 @@
 .materials-list__link:hover{
     text-decoration: underline;
 }
-
+/* -- footer -- */
 .footer{
     background-color: #21120b;
 }
@@ -141,8 +141,6 @@
     font-size: 1rem;
     font-family: 'Open Sans', sans-serif;
 }
-
-
 
 /* -- icons -- */
 

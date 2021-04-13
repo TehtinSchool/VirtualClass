@@ -1,4 +1,5 @@
 let currentPath = "../../assets/documents";
+getData();
 
 function showFiles(files){
     $("#files-list").empty();
@@ -56,7 +57,6 @@ $('body').on('click', '.link-folder', function() {
     currentPath = `${currentPath}/${folderName}`;
     getData();
 });
-getData();
 function getData(){
     $.getJSON( "../../assets/data/roots.json", function( data ) {
         let array = new Array();
@@ -82,11 +82,12 @@ function getData(){
             }
         });
         showFiles(array);
-      });
+    });
 
-      if(currentPath === "../../assets/documents"){
-        $(".go-back-js").hide();
-      }else{
-        $(".go-back-js").show();
-      }
+    if(currentPath === "../../assets/documents"){
+      $(".go-back-js").hide();
+    }
+    else{
+      $(".go-back-js").show();
+    }
 }
